@@ -1,0 +1,27 @@
+{
+  "description": "Publish a message to a specific topic.",
+  "supports_noop": false,
+  "input_method": "stdin",
+  "parameters": {
+    "topic": {
+      "description": "The name of the topic to send the message to.",
+      "type": "String[1]"
+    },
+    "attributes": {
+      "description": "Optional attributes in { name => val } format (default: {})",
+      "type": "Optional[Hash[1]]"
+    },
+    "message": {
+      "description": "The message to be published.",
+      "type": "String[1]"
+    },
+    "project": {
+      "description": "the project name where the cluster is hosted",
+      "type": "String[1]"
+    },
+    "credential": {
+      "description": "Path to a service account credentials file",
+      "type": "String[1]"
+    }
+  }
+}

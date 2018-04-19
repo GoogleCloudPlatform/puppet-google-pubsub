@@ -9,7 +9,7 @@
     },
     "attributes": {
       "description": "Optional attributes in { name => val } format (default: {})",
-      "type": "Optional[Hash[1]]"
+      "type": "Hash"
     },
     "message": {
       "description": "The message to be published.",

@@ -1,4 +1,4 @@
-# Copyright 2017 Google Inc.
+# Copyright 2018 Google Inc.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -456,25 +456,6 @@ describe Puppet::Type.type(:gpubsub_topic).provider(:google) do
         before { subject.instance_variable_set(:@deleted, true) }
         it { expect { subject.flush }.not_to raise_error }
       end
-    end
-  end
-
-  context '#exports' do
-    context 'exports all properties' do
-      let(:resource1) { create_type 1 }
-      before do
-        expect_network_get_success 1
-        described_class.prefetch(title0: resource1)
-      end
-
-      subject { resource1.exports }
-
-      let(:expected_results) do
-        {
-          name: 'test name#0 data'
-        }
-      end
-      it { is_expected.to eq(expected_results) }
     end
   end
 

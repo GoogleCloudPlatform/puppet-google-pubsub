@@ -62,7 +62,7 @@ required gems.
 ```puppet
 gpubsub_topic { 'conversation-1':
   ensure     => present,
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -78,7 +78,7 @@ gpubsub_subscription { 'subscription-1':
     push_endpoint => 'https://myapp.graphite.cloudnativeapp.com/webhook/sub1',
   },
   ack_deadline_seconds => 300,
-  project              => 'google.com:graphite-playground',
+  project              => $project, # e.g. 'my-test-project'
   credential           => 'mycred',
 }
 
@@ -107,7 +107,7 @@ A named resource to which messages are sent by publishers.
 ```puppet
 gpubsub_topic { 'conversation-1':
   ensure     => present,
-  project    => 'google.com:graphite-playground',
+  project    => $project, # e.g. 'my-test-project'
   credential => 'mycred',
 }
 
@@ -144,7 +144,7 @@ gpubsub_subscription { 'subscription-1':
     push_endpoint => 'https://myapp.graphite.cloudnativeapp.com/webhook/sub1',
   },
   ack_deadline_seconds => 300,
-  project              => 'google.com:graphite-playground',
+  project              => $project, # e.g. 'my-test-project'
   credential           => 'mycred',
 }
 
@@ -171,7 +171,7 @@ gpubsub_subscription { 'id-of-resource':
 
 ##### `topic`
 
-  A reference to Topic resource
+  A reference to a Topic resource.
 
 ##### `push_config`
 

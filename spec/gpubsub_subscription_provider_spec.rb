@@ -133,10 +133,7 @@ describe Puppet::Type.type(:gpubsub_subscription).provider(:google) do
               # it 'pushConfig' do
               #   # Add test code here
               # end
-              it do
-                is_expected
-                  .to have_attributes(ack_deadline_seconds: 1_733_817_478)
-              end
+              it { is_expected.to have_attributes(ack_deadline_seconds: 1_733_817_478) }
             end
 
             context 'Gpubsub_subscription[title1]' do
@@ -153,10 +150,7 @@ describe Puppet::Type.type(:gpubsub_subscription).provider(:google) do
               # it 'pushConfig' do
               #   # Add test code here
               # end
-              it do
-                is_expected
-                  .to have_attributes(ack_deadline_seconds: 3_467_634_957)
-              end
+              it { is_expected.to have_attributes(ack_deadline_seconds: 3_467_634_957) }
             end
 
             context 'Gpubsub_subscription[title2]' do
@@ -173,10 +167,7 @@ describe Puppet::Type.type(:gpubsub_subscription).provider(:google) do
               # it 'pushConfig' do
               #   # Add test code here
               # end
-              it do
-                is_expected
-                  .to have_attributes(ack_deadline_seconds: 5_201_452_436)
-              end
+              it { is_expected.to have_attributes(ack_deadline_seconds: 5_201_452_436) }
             end
           end
 
@@ -281,10 +272,7 @@ describe Puppet::Type.type(:gpubsub_subscription).provider(:google) do
               # it 'pushConfig' do
               #   # Add test code here
               # end
-              it do
-                is_expected
-                  .to have_attributes(ack_deadline_seconds: 1_733_817_478)
-              end
+              it { is_expected.to have_attributes(ack_deadline_seconds: 1_733_817_478) }
             end
 
             context 'Gpubsub_subscription[title1]' do
@@ -301,10 +289,7 @@ describe Puppet::Type.type(:gpubsub_subscription).provider(:google) do
               # it 'pushConfig' do
               #   # Add test code here
               # end
-              it do
-                is_expected
-                  .to have_attributes(ack_deadline_seconds: 3_467_634_957)
-              end
+              it { is_expected.to have_attributes(ack_deadline_seconds: 3_467_634_957) }
             end
 
             context 'Gpubsub_subscription[title2]' do
@@ -321,10 +306,7 @@ describe Puppet::Type.type(:gpubsub_subscription).provider(:google) do
               # it 'pushConfig' do
               #   # Add test code here
               # end
-              it do
-                is_expected
-                  .to have_attributes(ack_deadline_seconds: 5_201_452_436)
-              end
+              it { is_expected.to have_attributes(ack_deadline_seconds: 5_201_452_436) }
             end
           end
 

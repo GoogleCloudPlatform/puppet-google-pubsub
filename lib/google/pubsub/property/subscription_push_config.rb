@@ -80,8 +80,7 @@ module Google
       # Data is coming from the GCP API
       class SubscriPushConfigApi < SubscriPushConfig
         def initialize(args)
-          @push_endpoint =
-            Google::Pubsub::Property::String.api_munge(args['pushEndpoint'])
+          @push_endpoint = Google::Pubsub::Property::String.api_munge(args['pushEndpoint'])
         end
       end
 
@@ -89,8 +88,7 @@ module Google
       # Data is coming from the Puppet manifest
       class SubscriPushConfigCatalog < SubscriPushConfig
         def initialize(args)
-          @push_endpoint =
-            Google::Pubsub::Property::String.unsafe_munge(args['push_endpoint'])
+          @push_endpoint = Google::Pubsub::Property::String.unsafe_munge(args['push_endpoint'])
         end
       end
     end

@@ -114,7 +114,8 @@ Puppet::Type.type(:gpubsub_topic).provide(:google) do
 
   def exports
     {
-      name: resource[:name]
+      name: resource[:name],
+      project: resource[:project]
     }
   end
 

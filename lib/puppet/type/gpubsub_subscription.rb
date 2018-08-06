@@ -69,7 +69,7 @@ Puppet::Type.newtype(:gpubsub_subscription) do
     desc 'A reference to a Topic resource.'
   end
 
-  newproperty(:push_config, parent: Google::Pubsub::Property::SubscriPushConfig) do
+  newproperty(:push_config, parent: Google::Pubsub::Property::SubscriptionPushConfig) do
     desc <<-DOC
       If push delivery is used with this subscription, this field is used to configure it. An empty
       pushConfig signifies that the subscriber will pull and ack messages using API methods.

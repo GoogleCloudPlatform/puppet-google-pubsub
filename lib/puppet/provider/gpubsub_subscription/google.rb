@@ -67,7 +67,7 @@ Puppet::Type.type(:gpubsub_subscription).provide(:google) do
     {
       name: Google::Pubsub::Property::String.api_munge(fetch['name']),
       topic: Google::Pubsub::Property::TopicNameRef.api_munge(fetch['topic']),
-      push_config: Google::Pubsub::Property::SubscriPushConfig.api_munge(fetch['pushConfig']),
+      push_config: Google::Pubsub::Property::SubscriptionPushConfig.api_munge(fetch['pushConfig']),
       ack_deadline_seconds:
         Google::Pubsub::Property::Integer.api_munge(fetch['ackDeadlineSeconds'])
     }.reject { |_, v| v.nil? }

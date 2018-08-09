@@ -31,7 +31,7 @@ module Google
   module Pubsub
     module Data
       # A class to manage data for PushConfig for subscription.
-      class SubscriPushConfig
+      class SubscriptionPushConfig
         include Comparable
 
         attr_reader :push_endpoint
@@ -49,7 +49,7 @@ module Google
         end
 
         def ==(other)
-          return false unless other.is_a? SubscriPushConfig
+          return false unless other.is_a? SubscriptionPushConfig
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             return false if compare[:self] != compare[:other]
@@ -58,7 +58,7 @@ module Google
         end
 
         def <=>(other)
-          return false unless other.is_a? SubscriPushConfig
+          return false unless other.is_a? SubscriptionPushConfig
           compare_fields(other).each do |compare|
             next if compare[:self].nil? || compare[:other].nil?
             result = compare[:self] <=> compare[:other]
@@ -76,17 +76,17 @@ module Google
         end
       end
 
-      # Manages a SubscriPushConfig nested object
+      # Manages a SubscriptionPushConfig nested object
       # Data is coming from the GCP API
-      class SubscriPushConfigApi < SubscriPushConfig
+      class SubscriptionPushConfigApi < SubscriptionPushConfig
         def initialize(args)
           @push_endpoint = Google::Pubsub::Property::String.api_munge(args['pushEndpoint'])
         end
       end
 
-      # Manages a SubscriPushConfig nested object
+      # Manages a SubscriptionPushConfig nested object
       # Data is coming from the Puppet manifest
-      class SubscriPushConfigCatalog < SubscriPushConfig
+      class SubscriptionPushConfigCatalog < SubscriptionPushConfig
         def initialize(args)
           @push_endpoint = Google::Pubsub::Property::String.unsafe_munge(args['push_endpoint'])
         end
@@ -95,7 +95,7 @@ module Google
 
     module Property
       # A class to manage input to PushConfig for subscription.
-      class SubscriPushConfig < Google::Pubsub::Property::Base
+      class SubscriptionPushConfig < Google::Pubsub::Property::Base
         # Used for parsing Puppet catalog
         def unsafe_munge(value)
           self.class.unsafe_munge(value)
@@ -104,13 +104,13 @@ module Google
         # Used for parsing Puppet catalog
         def self.unsafe_munge(value)
           return if value.nil?
-          Data::SubscriPushConfigCatalog.new(value)
+          Data::SubscriptionPushConfigCatalog.new(value)
         end
 
         # Used for parsing GCP API responses
         def self.api_munge(value)
           return if value.nil?
-          Data::SubscriPushConfigApi.new(value)
+          Data::SubscriptionPushConfigApi.new(value)
         end
       end
     end

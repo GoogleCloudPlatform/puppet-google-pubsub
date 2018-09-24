@@ -24,25 +24,36 @@
 #     CONTRIBUTING.md located at the root of this package.
 #
 # ----------------------------------------------------------------------------
+require 'spec_helper'
+require 'vcr'
 
-source 'https://rubygems.org'
-group :test do
-  gem 'google-api-client'
-  gem 'googleauth'
-  gem 'metadata-json-lint'
-  gem 'parallel_tests'
-  gem 'puppet', ENV['PUPPET_GEM_VERSION'] || '>= 4.2.0'
-  gem 'puppet-lint'
-  gem 'puppet-lint-unquoted_string-check'
-  gem 'puppet-syntax'
-  gem 'puppetlabs_spec_helper'
-  gem 'rake', '~> 10.0'
-  gem 'rspec'
-  gem 'rspec-mocks'
-  gem 'rspec-puppet'
-  gem 'rubocop'
-  gem 'semantic_puppet'
-  gem 'simplecov'
-  gem 'vcr'
-  gem 'webmock'
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/cassettes'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+end
+
+describe 'topic.create', vcr: true do
+  it 'creates and destroys non-existent topic' do
+    puts 'pre-destroying topic'
+    VCR.use_cassette('pre_destroy_topic') do
+      run_example('delete_topic')
+    end
+    puts 'creating topic'
+    VCR.use_cassette('create_topic') do
+      run_example('topic')
+    end
+    puts 'checking that topic is created'
+    VCR.use_cassette('check_topic') do
+      validate_no_flush_calls('topic')
+    end
+    puts 'destroying topic'
+    VCR.use_cassette('destroy_topic') do
+      run_example('delete_topic')
+    end
+    puts 'confirming topic destroyed'
+    VCR.use_cassette('check_destroy_topic') do
+      validate_no_flush_calls('delete_topic')
+    end
+  end
 end
